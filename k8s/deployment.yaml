@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: php-k8s-app
+spec:
+  replicas: 2  # Número de instancias
+  selector:
+    matchLabels:
+      app: php-k8s-app
+  template:
+    metadata:
+      labels:
+        app: php-k8s-app
+    spec:
+      containers:
+      - name: php-k8s-app
+        image: kos75/php-k8s-app:v1
+        ports:
+        - containerPort: 80
